@@ -5,6 +5,14 @@ VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ml.ImageBlurrer", "ml.ImageBlurrer\ml.ImageBlurrer.csproj", "{870F6138-BB52-4E95-883C-91F0C75271AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "ml.Drawer\Assembly-CSharp.csproj", "{9BD11533-6B0F-3105-F7D9-F990579B36EC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ImageBlurrer", "ImageBlurrer", "{5F94AE62-74A0-4E5E-8556-8C075574F0B8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Drawer", "Drawer", "{97F6E0C2-8705-4FE7-97EE-9E401CDA95A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ml.ImageBlurrer.Shared", "ml.ImageBlurrer.Shared\ml.ImageBlurrer.Shared.csproj", "{66F551F9-6B90-493F-ACF6-42396E40436D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,11 +23,24 @@ Global
 		{870F6138-BB52-4E95-883C-91F0C75271AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{870F6138-BB52-4E95-883C-91F0C75271AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{870F6138-BB52-4E95-883C-91F0C75271AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BD11533-6B0F-3105-F7D9-F990579B36EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BD11533-6B0F-3105-F7D9-F990579B36EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BD11533-6B0F-3105-F7D9-F990579B36EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BD11533-6B0F-3105-F7D9-F990579B36EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66F551F9-6B90-493F-ACF6-42396E40436D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66F551F9-6B90-493F-ACF6-42396E40436D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66F551F9-6B90-493F-ACF6-42396E40436D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66F551F9-6B90-493F-ACF6-42396E40436D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D78BF543-A753-4105-BB95-5437E41DFDFF}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{870F6138-BB52-4E95-883C-91F0C75271AD} = {5F94AE62-74A0-4E5E-8556-8C075574F0B8}
+		{9BD11533-6B0F-3105-F7D9-F990579B36EC} = {97F6E0C2-8705-4FE7-97EE-9E401CDA95A8}
+		{66F551F9-6B90-493F-ACF6-42396E40436D} = {5F94AE62-74A0-4E5E-8556-8C075574F0B8}
 	EndGlobalSection
 EndGlobal

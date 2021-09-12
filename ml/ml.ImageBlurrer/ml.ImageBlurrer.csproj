@@ -2,11 +2,15 @@
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFrameworks>net461;net5.0</TargetFrameworks>
+        <TargetFrameworks>net471;net5.0</TargetFrameworks>
     </PropertyGroup>
 
     <ItemGroup>
       <PackageReference Include="ScottPlot" Version="4.1.20" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ml.ImageBlurrer.Shared\ml.ImageBlurrer.Shared.csproj" />
     </ItemGroup>
 
 </Project>

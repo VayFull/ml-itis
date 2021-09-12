@@ -1,9 +1,12 @@
-﻿namespace ml.ImageBlurrer
+﻿using ml.ImageBlurrer.Shared;
+
+namespace ml.ImageBlurrer
 {
     class Program
     {
         static void Main(string[] args)
         {
+            var imageManager = new ImageManager();
             const string imageName = "image.jpg";
             const string editedImageName = "editedImageName.jpg";
             
@@ -13,7 +16,7 @@
             var editedImagePath = $"{imageDirectory}{editedImageName}";
 
             var image = ImageExtension.GetImageFromPath(imagePath);
-            var editedImage = ImageExtension.GetBlurredImage(image);
+            var editedImage = imageManager.GetBlurredImageOf(image);
 
             editedImage.Save(editedImagePath);
         }
