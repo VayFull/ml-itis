@@ -7,7 +7,7 @@ namespace ml.ImageBlurrer
     {
         public static string GetImageDirectoryPath() => $@"{Directory.GetCurrentDirectory()}\Images\";
         
-        public static Bitmap GetImageFromPath(string path) => new(path);
+        public static Bitmap GetImageFromPath(string path) => new Bitmap(path);
 
         public static Bitmap GetBlurredImage(Bitmap initialImage)
         {
