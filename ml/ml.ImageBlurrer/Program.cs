@@ -14,6 +14,11 @@ namespace ml.ImageBlurrer
             var imageDirectory = ImageExtension.GetImageDirectoryPath();
             
             imageManager.GetImageAndSaveBlurred(imageName, editedImageName, imageDirectory);
+
+            var instance = new FirstClass();
+            instance.Make();
+
+            var image = imageManager.GetImage(imageName, imageDirectory);
         }
     }
 }

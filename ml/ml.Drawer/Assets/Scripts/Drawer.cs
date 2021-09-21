@@ -1,8 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
+using System.Linq;
 using ml.ImageBlurrer.Shared;
 using UnityEngine;
 using UnityEngine.UI;
+using Color = UnityEngine.Color;
+using Image = UnityEngine.UI.Image;
+using Random = UnityEngine.Random;
 
 namespace Assets.Scripts
 {
@@ -28,6 +34,9 @@ namespace Assets.Scripts
         private Slider _sizeSlider;
         public GameObject SprayToggleGameObject;
         private Toggle _sprayToggle;
+        public GameObject ParamsGameObject;
+        private Text _paramsText;
+        public GameObject ParamsTextGameObject;
 
         private void Start()
         {
@@ -44,6 +53,7 @@ namespace Assets.Scripts
             _sizeSlider.onValueChanged.AddListener(delegate { SizeSliderValueChanged(); });
             _sizeSlider.value = 1;
             _sprayToggle = SprayToggleGameObject.GetComponent<Toggle>();
+            _paramsText = ParamsGameObject.GetComponent<Text>();
 
             Color[] colors =
             {
@@ -97,7 +107,8 @@ namespace Assets.Scripts
                         createdObject.transform.localScale = changedScale;
                         var deltaX = Random.Range(-0.1f, 0.1f);
                         var deltaY = Random.Range(-0.1f, 0.1f);
-                        createdObject.transform.position = new Vector3(ray.centroid.x + deltaX, ray.centroid.y + deltaY);
+                        createdObject.transform.position =
+                            new Vector3(ray.centroid.x + deltaX, ray.centroid.y + deltaY);
                         createdObject.transform.parent = ClearObject.transform;
                     }
                 }
@@ -126,7 +137,29 @@ namespace Assets.Scripts
 
             var data = texture.EncodeToJPG();
             File.WriteAllBytes($@"{dataPath}\{fileName}", data);
-            _imageManager.GetImageAndSaveBlurred(fileName, $"edited{fileName}", dataPath);
+
+            if (!string.IsNullOrEmpty(_paramsText.text))
+            {
+                var text = _paramsText.text;
+                var fragments = text
+                    .Split(',')
+                    .Select(int.Parse)
+                    .ToList();
+
+                if (fragments.Count != 5)
+                {
+                    _imageManager.GetImageAndSaveBlurred(fileName, $"edited{fileName}", dataPath);
+                }
+
+                var description = new BlurDescription(fragments[0], fragments[1], fragments[2], fragments[3],
+                    fragments[4]);
+                
+                _imageManager.GetImageAndSaveBlurred(fileName, $"edited{fileName}", dataPath, description);
+            }
+            else
+            {
+                _imageManager.GetImageAndSaveBlurred(fileName, $"edited{fileName}", dataPath);
+            }
         }
 
         public void Clear()
@@ -145,6 +178,7 @@ namespace Assets.Scripts
                 Paper.SetActive(true);
                 ClearObject.SetActive(true);
                 Brush.SetActive(true);
+                ParamsTextGameObject.SetActive(true);
             }
             else
             {
@@ -161,6 +195,7 @@ namespace Assets.Scripts
                 Paper.SetActive(false);
                 ClearObject.SetActive(false);
                 Brush.SetActive(false);
+                ParamsTextGameObject.SetActive(false);
             }
         }
     }

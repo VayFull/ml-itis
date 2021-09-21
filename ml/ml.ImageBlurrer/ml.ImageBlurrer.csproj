@@ -6,6 +6,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="MatplotlibCS" Version="1.0.63" />
+      <PackageReference Include="Numpy" Version="3.7.1.25" />
       <PackageReference Include="ScottPlot" Version="4.1.20" />
     </ItemGroup>
 

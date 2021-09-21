@@ -4,21 +4,31 @@ namespace ml.ImageBlurrer.Shared
 {
     public class ImageManager
     {
-        public void GetImageAndSaveBlurred(string imageName, string editedImageName, string imageDirectory)
+        public void GetImageAndSaveBlurred(string imageName, string editedImageName, string imageDirectory, BlurDescription blurDescription = null)
         {
             var imagePath = $"{imageDirectory}{imageName}";
             var editedImagePath = $"{imageDirectory}{editedImageName}";
 
             var image = new Bitmap(imagePath);
-            var editedImage = GetBlurredImageOf(image);
+            
+            if (blurDescription == null)
+            {
+                blurDescription = new BlurDescription(image);
+            }
+            
+            var editedImage = GetBlurredImageOf(image, blurDescription);
 
             editedImage.Save(editedImagePath);
         }
-        
-        public Bitmap GetBlurredImageOf(Bitmap initialImage)
-        {
-            var description = new BlurDescription(initialImage);
 
+        public Bitmap GetImage(string imageName, string imageDirectory)
+        {
+            var imagePath = $"{imageDirectory}{imageName}";
+            return new Bitmap(imagePath);
+        }
+        
+        public Bitmap GetBlurredImageOf(Bitmap initialImage, BlurDescription description)
+        {
             for (int xFragment = 0; xFragment < description.FragmentCount; xFragment++)
             {
                 for (int yFragment = 0; yFragment < description.FragmentCount; yFragment++)
