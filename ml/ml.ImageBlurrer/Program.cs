@@ -7,18 +7,24 @@ namespace ml.ImageBlurrer
         static void Main(string[] args)
         {
             var imageManager = new ImageManager();
-
             const string imageName = "image.jpg";
             const string editedImageName = "editedImageName.jpg";
-
             var imageDirectory = ImageExtension.GetImageDirectoryPath();
-            
             imageManager.GetImageAndSaveBlurred(imageName, editedImageName, imageDirectory);
 
-            var instance = new FirstClass();
-            instance.Make();
+            var superPixelManager = new SuperPixelManager();
+            const string editedSuperPixelImageName = "editedSuperPixelImageName.jpg";
+            superPixelManager.GetImageAndSaveSuperPixelized(imageName, editedSuperPixelImageName, imageDirectory, 0.1f, 40);
 
-            var image = imageManager.GetImage(imageName, imageDirectory);
+            
+
+            /*for (float i = 0.1f; i < 2f; i+= 0.35f)
+            {
+                superPixelManager.GetImageAndSaveSuperPixelized(imageName, $"k={i.ToString()}c=12{editedSuperPixelImageName}", 
+                    imageDirectory, i, 12);
+            }*/
+
+            //var image = imageManager.GetImage(imageName, imageDirectory);
         }
     }
 }

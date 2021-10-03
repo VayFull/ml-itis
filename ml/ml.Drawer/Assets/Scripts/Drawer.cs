@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using ml.ImageBlurrer.Shared;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Color = UnityEngine.Color;
 using Image = UnityEngine.UI.Image;
@@ -87,6 +85,11 @@ namespace Assets.Scripts
 
         private void Update()
         {
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                SceneManager.LoadScene(1);
+            }
+            
             if (!Input.GetMouseButton(0))
                 return;
 
@@ -96,21 +99,20 @@ namespace Assets.Scripts
             {
                 if (_sprayToggle.isOn)
                 {
-                    var rnd = Random.Range(3, 8);
-                    for (int i = 0; i < rnd; i++)
+                    var modifiedObjectScale = Brush.transform.localScale;
+                    var changeScale = Random.Range(modifiedObjectScale.x - 1.5f, modifiedObjectScale.x - 2f);
+                    if (changeScale < 0.05f)
                     {
-                        var modifiedObjectScale = Brush.transform.localScale;
-                        var changeScale = Random.Range(modifiedObjectScale.x - 2f, modifiedObjectScale.x - 1.5f);
-                        if (changeScale < 0.1f) changeScale = 0.1f;
-                        var changedScale = new Vector3(changeScale, changeScale, changeScale);
-                        var createdObject = Instantiate(Brush, ray.centroid, Quaternion.identity);
-                        createdObject.transform.localScale = changedScale;
-                        var deltaX = Random.Range(-0.1f, 0.1f);
-                        var deltaY = Random.Range(-0.1f, 0.1f);
-                        createdObject.transform.position =
-                            new Vector3(ray.centroid.x + deltaX, ray.centroid.y + deltaY);
-                        createdObject.transform.parent = ClearObject.transform;
+                        changeScale = 0.05f;
                     }
+                    var changedScale = new Vector3(changeScale, changeScale, changeScale);
+                    var createdObject = Instantiate(Brush, ray.centroid, Quaternion.identity);
+                    createdObject.transform.localScale = changedScale;
+                    var deltaX = Random.Range(-0.1f * modifiedObjectScale.x, 0.1f * modifiedObjectScale.x);
+                    var deltaY = Random.Range(-0.1f * modifiedObjectScale.x, 0.1f * modifiedObjectScale.x);
+                    createdObject.transform.position =
+                        new Vector3(ray.centroid.x + deltaX, ray.centroid.y + deltaY);
+                    createdObject.transform.parent = ClearObject.transform;
                 }
                 else
                 {
@@ -131,7 +133,7 @@ namespace Assets.Scripts
             var fileName = "image.jpg";
 
             RenderTexture.active = RenderTexture;
-            var texture = new Texture2D(RenderTexture.width, RenderTexture.height);
+            var texture = new Texture2D(RenderTexture.width, RenderTexture.height, TextureFormat.RGB24, false);
             texture.ReadPixels(new Rect(0, 0, RenderTexture.width, RenderTexture.height), 0, 0);
             texture.Apply();
 

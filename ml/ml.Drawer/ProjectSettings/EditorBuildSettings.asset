@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: f78a568de97e0c84cae6ec49968202ba
+  - enabled: 1
+    path: Assets/Scenes/SuperPixel.unity
+    guid: 13ca87c3527a0404e9feb100864c45ec
   m_configObjects: {}
