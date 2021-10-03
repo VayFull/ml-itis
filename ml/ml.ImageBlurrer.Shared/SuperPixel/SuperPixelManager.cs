@@ -7,6 +7,9 @@ using Microsoft.ML.Data;
 
 namespace ml.ImageBlurrer.Shared
 {
+    /// <summary>
+    /// Алгоритм суперпикселизации
+    /// </summary>
     public class SuperPixelManager
     {
         public void GetImageAndSaveSuperPixelized(string imageName, string editedImageName, string imageDirectory,

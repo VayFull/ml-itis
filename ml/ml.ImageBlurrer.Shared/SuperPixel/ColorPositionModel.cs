@@ -4,6 +4,9 @@ using Microsoft.ML.Data;
 
 namespace ml.ImageBlurrer.Shared
 {
+    /// <summary>
+    /// Входная модель для ml.net
+    /// </summary>
     public class ColorPositionModel
     {
         public ColorPositionModel(int red, int green, int blue, int xPosition, int yPosition)

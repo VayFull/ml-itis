@@ -2,6 +2,9 @@
 
 namespace ml.ImageBlurrer.Shared
 {
+    /// <summary>
+    /// Входные параметры для blur'а.
+    /// </summary>
     public class BlurDescription
     {
         public Point StartBlurPosition { get; set; }

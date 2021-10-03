@@ -3,6 +3,9 @@ using System.Drawing;
 
 namespace ml.ImageBlurrer.Shared
 {
+    /// <summary>
+    /// Модель для удобного взаимодействия цвета и позиции
+    /// </summary>
     public class PositionColor
     {
         public PositionColor(Point point, Color color)

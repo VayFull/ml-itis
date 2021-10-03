@@ -2,6 +2,9 @@
 
 namespace ml.ImageBlurrer.Shared
 {
+    /// <summary>
+    /// Алгоритмы для blur'а
+    /// </summary>
     public class ImageManager
     {
         public void GetImageAndSaveBlurred(string imageName, string editedImageName, string imageDirectory, BlurDescription blurDescription = null)

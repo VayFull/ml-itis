@@ -128,13 +128,13 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="BlurDescription.cs" />
-        <Compile Include="ClusterPrediction.cs" />
-        <Compile Include="ColorPositionModel.cs" />
-        <Compile Include="ImageManager.cs" />
-        <Compile Include="PositionColor.cs" />
+        <Compile Include="Blur\BlurDescription.cs" />
+        <Compile Include="Blur\ImageManager.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="SuperPixelManager.cs" />
+        <Compile Include="SuperPixel\ClusterPrediction.cs" />
+        <Compile Include="SuperPixel\ColorPositionModel.cs" />
+        <Compile Include="SuperPixel\PositionColor.cs" />
+        <Compile Include="SuperPixel\SuperPixelManager.cs" />
     </ItemGroup>
     <ItemGroup>
       <None Include="packages.config" />
